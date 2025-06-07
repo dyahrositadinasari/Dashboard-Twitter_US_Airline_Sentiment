@@ -3,5 +3,5 @@ import pandas as pd
 import numpy as np
 
 
-st.write("Dashboard Twitter US Airline Sentiment")
-st.markdown("Sentiment Analysis of Tweets about US Airline")
+st.title("Dashboard Twitter US Airline Sentiment")
+st.write("Sentiment Analysis of Tweets about US Airline")
