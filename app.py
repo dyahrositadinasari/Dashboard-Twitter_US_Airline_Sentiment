@@ -20,7 +20,7 @@ random_tweet = st.sidebar.radio('Sentiment', ('positive', 'neutral', 'negative')
 st.sidebar.markdown(data.query('airline_sentiment == @random_tweet')[['text']].sample(n=1).iat[0,0])
 
 st.sidebar.markdown('### Number of Tweets by sentiment')
-select = st.sidebar.selectbox('Visualization type', ['Histogram', 'Pie chart'], key = '1')
+select = st.sidebar.selectbox('Visualization type', ['Histogram', 'Pie chart'], key='1')
 sentiment_count = data['airline_sentiment'].value_counts()
 sentiment_count = pd.DataFrame({'Sentiment': sentiment_count.index, 'Tweets':sentiment_count.values})
 
@@ -33,6 +33,14 @@ if not st.sidebar.checkbox('Hide', True):
     fig = px.pie(sentiment_count, names='Sentiment', values='Tweets')
     st.plotly_chart(fig)
 
-st.map(data)
+st.sidebar.subheader('When and Where are users tweeting from?')
+hour = st.sidebar.slider('Hour of day', 0, 23)
+modified_data = data[data['tweet_created'].dt.hour == hour]
+
+if not st.sidebar.checkbox('Close', True, key='1'):
+  st.markdown('###Tweets location based on time of day')
+  st.markdown('%i Tweets between %i:00 and %i:00' % (len(modified_data), hour, (hour+1)%24))
+  st.map(modified_data)
+
 
     
