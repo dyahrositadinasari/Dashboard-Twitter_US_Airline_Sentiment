@@ -50,7 +50,7 @@ choice = st.sidebar.multiselect('Pick Airlines', ['US Airways', 'United', 'Ameri
 if len(choice) > 0:
   choice_data = data[data['airline'].isin(choice)]
   fig_choice = px.histogram(choice_data, x='airline', y='airline_sentiment', histfunc='count', color='airline_sentiment', 
-                            facet_col='airline_sentiment', labels={'airline_statement':'tweets'}, height=600, width=800)
+                            facet_col='airline_sentiment', labels={'airline_statement':'tweets'}, height=600, width=900)
   st.plotly_chart(fig_choice)
 
 
