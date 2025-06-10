@@ -32,6 +32,7 @@ if not st.sidebar.checkbox('Hide', True):
   else:
     fig = px.pie(sentiment_count, names='Sentiment', values='Tweets')
     st.plotly_chart(fig)
-    
+
+st.map(data)
 
     
