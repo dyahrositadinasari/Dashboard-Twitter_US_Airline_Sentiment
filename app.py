@@ -43,7 +43,10 @@ if not st.sidebar.checkbox('Close', True, key='show_location_map'):
   st.map(modified_data)
   if st.sidebar.checkbox('Show raw data', False):
     st.write(modified_data)
-  
+
+st.sidebar.subheader('Breakdown Airline Tweets by sentiment')
+choice = st.sidebar.multiselect('Pick Airlines', ['US Airways', 'United', 'American', 'Southwest', 'Delta', 'Virgin America'], key='airlines')
+
 
 
     
