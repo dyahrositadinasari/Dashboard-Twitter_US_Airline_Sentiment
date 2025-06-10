@@ -22,4 +22,16 @@ st.sidebar.markdown(data.query('airline_sentiment == @random_tweet')[['text']].s
 st.sidebar.markdown('### Number of Tweets by sentiment')
 select = st.sidebar.selectbox('Visualization type', ['Histogram', 'Pie chart'], key = '1')
 sentiment_count = data['airline_sentiment'].value_counts()
-st.write(sentiment_count)
+sentiment_count = pd.DataFrame({'sentiment': sentiment_count.index, 'Tweets':sentiment_count.values})
+
+if not st.sidebar.checkbox('Hide', True):
+  st.markdown('###Number of Tweets by Sentiment')
+  if select == 'Histogram':
+    fig = px.bar(sentiment_count, x='Sentiment', y='Tweets', color='Tweets', height=500)
+    st.plotly.chart(fig)
+  else:
+    fig = px.pie(sentiment_count, names='Sentiment', values='Tweets')
+    st.plotly.chart(fig)
+    
+
+    
