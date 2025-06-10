@@ -6,7 +6,7 @@ import numpy as np
 st.title("Dashboard Twitter US Airline Sentiment")
 st.write("Sentiment Analysis of Tweets 🕊 about US Airline")
 
-url = "Dashboard-Twitter_US_Airline_Sentiment/Tweets.csv"
+url = "Tweets.csv"
 
 st.cache_data(persist=True)
 def load_data():
