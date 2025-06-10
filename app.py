@@ -48,7 +48,7 @@ st.sidebar.subheader('Breakdown Airline Tweets by sentiment')
 choice = st.sidebar.multiselect('Pick Airlines', ['US Airways', 'United', 'American', 'Southwest', 'Delta', 'Virgin America'], key='airlines')
 
 if len(choice) > 0:
-  choice_data = data[data.airline.isin(choice)]
+  choice_data = data[data['airline'].isin(choice)]
   fig_choice = px.histogram(choice_data, x='airline', y='airline_sentiment', histfunc='count', color='airline_sentiment', 
                             facet_col='airline_sentiment', labels={'airline_statement':'tweets'}, height=600, width=800)
   st.plotly_chart(fig_choice)
