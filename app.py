@@ -47,6 +47,9 @@ if not st.sidebar.checkbox('Close', True, key='show_location_map'):
 st.sidebar.subheader('Breakdown Airline Tweets by sentiment')
 choice = st.sidebar.multiselect('Pick Airlines', ['US Airways', 'United', 'American', 'Southwest', 'Delta', 'Virgin America'], key='airlines')
 
+if len(choice) > 0:
+  choice_data = data[data.airline.isin(choice)]
+  fig_choice = px.histogram(choice_data, x='airline', y='airline_sentiment', histfunc='count', color='airline_sentiment', facet_col='airline_sentiment')
 
 
     
