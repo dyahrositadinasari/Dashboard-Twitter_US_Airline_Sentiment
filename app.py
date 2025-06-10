@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly
 import plotly.express as px
 
 st.title("Dashboard Twitter US Airline Sentiment")
@@ -29,10 +28,10 @@ if not st.sidebar.checkbox('Hide', True):
   st.markdown('###Number of Tweets by Sentiment')
   if select == 'Histogram':
     fig = px.bar(sentiment_count, x='Sentiment', y='Tweets', color='Tweets', height=500)
-    st.plotly.chart(fig)
+    st.plotly_chart(fig)
   else:
     fig = px.pie(sentiment_count, names='Sentiment', values='Tweets')
-    st.plotly.chart(fig)
+    st.plotly_chart(fig)
     
 
     
