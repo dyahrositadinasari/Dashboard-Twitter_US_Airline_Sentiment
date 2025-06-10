@@ -41,6 +41,9 @@ if not st.sidebar.checkbox('Close', True, key='1'):
   st.markdown('###Tweets location based on time of day')
   st.markdown('%i Tweets between %i:00 and %i:00' % (len(modified_data), hour, (hour+1)%24))
   st.map(modified_data)
+  if st.sidebar.checkbox('Show raw data', False):
+    st.write(modified_data)
+  
 
 
     
